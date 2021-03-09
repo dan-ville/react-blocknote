@@ -11,10 +11,12 @@ function App() {
     <div className="App">
       <Header />
       <Note />
+      {/* <Note getNoteData={ (noteData) => setNotes(...notes, noteData) } /> */}
       <p>
         Tip: Save your note by pressing <strong>ctrl + enter</strong>.
       </p>
-      <NoteBoard notes={notes}/>
+      <NoteBoard notes={notes} />
+    
     </div>
   );
 }

@@ -1,16 +1,40 @@
 import React, { useState } from 'react'
 
-const Note = () => {
-    const [isActive, setIsActive] = useState(false)
-    const [noteData, setNoteData] = useState({})
+const Note = ({getNoteData}) => {
+    const initialNoteData = {
+        "id": Date.now(),
+        "note-title": '',
+        "note-content": '',
+    };
 
-    // TODO: Pass data from Note UP to App to be used in NoteBoard
-    
+    // ! Removed isActive 
+
+    const [noteData, setNoteData] = useState(initialNoteData);
+
+    const handleChange = (event) => {
+        setNoteData({ ...noteData, [event.target.name]: event.target.value });
+        // TODO: Pass note data back up to parent App so that NoteBoard can be rendered
+        // getNoteData(noteData);
+    };
+
     return (
         <div className="note-wrapper" >
             <form className="note-form">
-                <input type="text" name="note-title" className="note-title" placeholder="Title" autoComplete="off" />
-                <textarea name="note-content" className="note-content auto-resize" cols="30" placeholder="Write your note here..." ></textarea>
+                <input 
+                    type="text" 
+                    name="note-title" 
+                    className="note-title" 
+                    placeholder="Title" 
+                    autoComplete="off" 
+                    onChange={ handleChange }
+                />
+                <textarea 
+                    name="note-content" 
+                    className="note-content auto-resize" 
+                    cols="30" 
+                    placeholder="Write your note here..." 
+                    onChange={ handleChange }
+                />
             </form>
             <div className="options">
                 <button className="tags-option">Tags</button>

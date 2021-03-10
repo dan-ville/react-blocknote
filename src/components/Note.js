@@ -7,14 +7,11 @@ const Note = ({getNoteData}) => {
         "note-content": '',
     };
 
-    // ! Removed isActive 
-
     const [noteData, setNoteData] = useState(initialNoteData);
 
     const handleChange = (event) => {
         setNoteData({ ...noteData, [event.target.name]: event.target.value });
-        // TODO: Pass note data back up to parent App so that NoteBoard can be rendered
-        // getNoteData(noteData);
+        getNoteData(noteData);
     };
 
     return (
@@ -40,7 +37,7 @@ const Note = ({getNoteData}) => {
                 <button className="tags-option">Tags</button>
                 <button className="color-option">Colors</button>
                 <button className="delete-note">Delete</button>
-                <button >Save</button>
+                <button onClick={event => getNoteData(noteData)}>Save</button>
             </div>
         </div>
     )

@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Header = () => {
+const Header = ({handleInputName}) => {
+    
     return (
-        <div>
-            <h1>Blocknote</h1>
-        </div>
-    )
+      <div>
+        <h1>Blocknote ✍️</h1>
+      </div>
+    );
 }
 
 export default Header

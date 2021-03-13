@@ -1,15 +1,18 @@
-import { useState } from 'react';
-import uuid from 'react-uuid'
+import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import NewNote from './components/NewNote'
 import NoteBoard from './components/NoteBoard';
 
 function App() {
-  const [notes, setNotes] = useState([]);
-  
+  const [notes, setNotes] = useState(localStorage.notes ? JSON.parse(localStorage.notes) : []);
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes])
+
   const onSaveNote = (note) => {
-    setNotes([...notes, note]);
+    setNotes([note, ...notes]);
     console.log(notes);
   }
   

@@ -18,10 +18,18 @@ const NewNote = ({ onSaveNote }) => {
     })
   }
   
-  const handleSaveNote = () => {
+  const handleOnSaveNote = () => {
     onSaveNote(noteData)
   }
-  
+
+  const autoResizeInput = (element, defaultHeight) => {
+    if (element) {
+      const target = element.target ? element.target : element;
+      target.style.height = defaultHeight;
+      target.style.height = `${target.scrollHeight}px`;
+    }
+  }
+
   return (
     <div className="note-wrapper">
       <form className="note-form">
@@ -38,14 +46,17 @@ const NewNote = ({ onSaveNote }) => {
           className="note-content auto-resize"
           cols="30"
           placeholder="Write your note here..."
-          onChange={(event) => handleEditField(event)}
+          onChange={(event) => {
+            handleEditField(event);
+            autoResizeInput(event.target, '50px')
+          }}
         />
       </form>
       <div className="options">
         <button className="tags-option">Tags</button>
         <button className="color-option">Colors</button>
         <button className="delete-note">Delete</button>
-        <button onClick={handleSaveNote}>Save</button>
+        <button onClick={handleOnSaveNote}>Save</button>
       </div>
     </div>
   );

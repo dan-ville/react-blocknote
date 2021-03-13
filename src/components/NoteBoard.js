@@ -1,14 +1,15 @@
 import React from 'react'
-import Note from './Note'
 
-// TODO: Pass data from Notes array in App to Noteboard
 const NoteBoard = ({notes}) => {
     return (
-        <div>
-            {notes.map(note => {
-                //    TODO: Render notes
+        <div id="noteboard-wrapper">
+            {notes.map(note => (
+                <div className="note-wrapper">
+                    <h2>{note.title}</h2>
+                    <p>{note.body}</p>
+                </div>
                 
-            })}
+            ))}
         </div>
     )
 }

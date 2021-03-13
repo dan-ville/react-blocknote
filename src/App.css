@@ -1,38 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
 .App {
+  margin: auto;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+    --bg: #212121;
+    --text: white;
+    --outline: rgba(255, 255, 255, 0.5);
+    --forest: #138d19;
+    --brick: #8d2513;
+    --aqua: #138d83;
+    --cinder: #b98c10;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: white;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+input, button, textarea {
+  font-family: inherit;
+  background-color: var(--bg);
+  color: var(--text);
+  outline: none;
+}
+
+input, textarea {
+  border: none;
+}
+
+
+#new-note {
+  box-shadow: rgba(255, 255, 255, 0.5);
+}
+#noteboard-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.note-wrapper {
+  width: 50%;
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+  border: 1px solid var(--outline);
+}
+
+.note-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.options {
+  display: flex;
+  justify-content: space-evenly;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.note-title {
+  font-size: 1.25rem;
+}
+
+.note-content {
+  font-size: 1rem;
+  resize: none;
+}
+
+.options > button {
+  border: none;
+  border-radius: 2px;
+  height: 30px;
+  width: 60px;
+  cursor: pointer;
+}
+
+.options > button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }

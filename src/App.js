@@ -6,6 +6,7 @@ import NoteBoard from './components/NoteBoard';
 
 function App() {
   const [notes, setNotes] = useState(localStorage.notes ? JSON.parse(localStorage.notes) : []);
+  const [activeNote, setActiveNote] = useState(null)
 
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes))
@@ -13,9 +14,10 @@ function App() {
 
   const onSaveNote = (note) => {
     setNotes([note, ...notes]);
-    console.log(notes);
+    console.log(note)
   }
   
+
   return (
     <div className="App">
       <Header />
@@ -23,7 +25,11 @@ function App() {
       <p>
         Tip: Save your note by pressing <strong>ctrl + enter</strong>.
       </p>
-      <NoteBoard notes={notes} />
+      <NoteBoard 
+        notes={notes} 
+        activeNote={activeNote}
+        setActiveNote={setActiveNote} 
+      />
     </div>
   );
 }

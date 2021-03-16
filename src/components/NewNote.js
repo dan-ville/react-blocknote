@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 
 const NewNote = ({ onSaveNote }) => {
 
-  const [noteData, setNoteData] = useState({
+  const initialNoteData = {
     id: uuid(),
-    title: "New note",
+    title: "",
     body: "",
     lastModified: Date.now(),
-  });
+  };
+
+  const [noteData, setNoteData] = useState(initialNoteData);
 
   const handleEditField = (event) => {
     setNoteData({ 
@@ -16,20 +18,27 @@ const NewNote = ({ onSaveNote }) => {
       [event.target.name]: event.target.value,
       lastModified: Date.now() 
     })
-  }
+  };
   
   const handleOnSaveNote = () => {
-    onSaveNote(noteData)
-  }
+    onSaveNote(noteData);
 
-  const autoResizeInput = (element, defaultHeight) => {
+    setNoteData({
+      id: uuid(),
+      title: "",
+      body: "",
+    });
+  };
+  
+  const handleAutoResizeInput = (element, defaultHeight) => {
     if (element) {
       const target = element.target ? element.target : element;
       target.style.height = defaultHeight;
       target.style.height = `${target.scrollHeight}px`;
     }
-  }
+  };
 
+ 
   return (
     <div className="note-wrapper">
       <form className="note-form">
@@ -48,7 +57,7 @@ const NewNote = ({ onSaveNote }) => {
           placeholder="Write your note here..."
           onChange={(event) => {
             handleEditField(event);
-            autoResizeInput(event.target, '50px')
+            handleAutoResizeInput(event.target, '50px')
           }}
         />
       </form>

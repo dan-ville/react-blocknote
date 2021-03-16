@@ -38,9 +38,20 @@ input, textarea {
 .note-wrapper {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, .75);
 }
+
 #noteboard-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: auto;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: left;
+}
+
+#noteboard-wrapper > .note-wrapper {
+  margin: 0.5rem;
+  width: 20vw;
+  border-radius: 10px;
 }
 
 .note-wrapper {
